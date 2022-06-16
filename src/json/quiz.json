@@ -62,13 +62,13 @@
     {
       "title": "중간고사",
       "docUrl": "https://github.com/advanced-webapps-class/classroom/tree/gh-pages/2021/test1",
-      "previewUrl": "",
+      "previewUrl": "https://kkimhaji.github.io/contents-tab/midex/",
       "gitUrl": "https://github.com/kkimhaji/contents-tab/tree/master/midex"
     },
     {
       "title": "기말고사",
       "docUrl": "https://github.com/advanced-webapps-class/classroom/tree/gh-pages/2021/test2",
       "previewUrl": "",
-      "gitUrl": ""
+      "gitUrl": "https://github.com/kkimhaji/start-fe-2022"
     }
   ]
