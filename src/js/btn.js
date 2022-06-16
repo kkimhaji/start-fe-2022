@@ -1,27 +1,12 @@
 
-const $btnGroup = document.querySelectorAll('.btn-group')[0];
-const $quizBtnGroup = document.querySelectorAll('.btn-group')[1];
-
-const $classbtns = $btnGroup.querySelectorAll('.btn');
-const $quizbtns = $quizBtnGroup.querySelectorAll('.btn');
-
-var qselected = $quizBtnGroup.querySelector('.active');
-var cselected = $btnGroup.querySelector('.active');
-const $loading = document.querySelector('.spinner-border');
-
-
-$quizbtns.forEach(($btn)=>{
-    $btn.addEventListener('click', (event)=>{
-        qselected.classList.remove("active");
-        event.target.classList.add("active");
-        qselected = event.target;
+document.querySelectorAll('.btn-group').forEach((original) => {
+    const $btns = original.querySelectorAll('.btn');
+    $btns.forEach(($btn)=>{
+        $btn.addEventListener('click', (event)=>{
+            for (let i = 0; i < $btns.length; i++) {
+                $btns[i].classList.remove("active");
+            }
+            event.target.classList.add("active");
+        });
     });
-});
-
-$classbtns.forEach(($btn)=>{
-    $btn.addEventListener('click', (event)=>{
-        cselected.classList.remove("active");
-        event.target.classList.add("active");
-        cselected = event.target;
-    });
-});
+})
