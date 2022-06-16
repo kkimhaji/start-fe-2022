@@ -2,7 +2,7 @@ let classData = [];
 let quizData;
 
 async function getClassData(){
-    const response = await fetch("/class.json");
+    const response = await fetch("./class.json");
     let i = 1;
     for(const cd of await response.json()){
         classData.push({
@@ -18,10 +18,11 @@ async function getClassData(){
 }
 
 async function getQuizData(){
-    const result= await fetch("quiz.json");
-    quizData = result.json(); //json과 출력에 필요한 내용이 같음
-    return result;
+    const result= await fetch("./quiz.json");
+    return result.json(); //json과 출력에 필요한 내용이 같음
+
 }
+
 
 
 export {getClassData, getQuizData}

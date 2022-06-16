@@ -1,22 +1,24 @@
 import * as jsonData from './data';
 
 
-const $classTable = document.querySelector('tbody')[0];
-const $quizTable = document.querySelector('tbody')[1];
+const $classTable = document.querySelectorAll('tbody')[0];
+const $quizTable = document.querySelectorAll('tbody')[1];
 
 drawClassTable();
+drawQuizTable();
 
 function makeClassTable(classData){
     return `
     <tr>
-        <td>${classData.week}</td>
+        <th scope="row">${classData.week}</th>
+        <td>${classData.title}</td>
         <td>
             <a href = "${classData.docUrl}" class="badge bg-secondary">보기</a>
         </td>
         <td>
-            ${classData.links.forEach((link, i)=>{
-                return `<a href="${link}" class="badge bg-secondary">${i++}</a>`
-            })}
+            ${classData.links.map((link, i)=>{
+               return `<a href="${link}" class="badge bg-secondary">${i+1}</a>`
+            }).join(" ")}
         </td>
         <td>${classData.date}</td>
         <td>
@@ -28,5 +30,34 @@ function makeClassTable(classData){
 
 async function drawClassTable(){
     const classData = await jsonData.getClassData();
-    $classTable.innerHTML =  makeClassTable(classData);
+    classData.forEach(item => {
+        $classTable.innerHTML += makeClassTable(item);
+    })
+    
+}
+
+function makeQuizTable(quizData){
+    return `
+    <tr>
+        <td>${quizData.title}</td>
+        <td>
+            <a class="badge bg-secondary" href="${quizData.docUrl}">문서</a>
+        </td>
+        <td>
+            <a href="${quizData.previewUrl}">보기</a>
+        </td>
+        <td>
+            <a href="${quizData.gitUrl}">git</a>
+        </td>
+    </tr>
+    `
+}
+
+
+async function drawQuizTable(){
+    const quizData = await jsonData.getQuizData();
+    quizData.forEach(item => {
+        console.log(makeQuizTable(item));
+        $quizTable.innerHTML += makeQuizTable(item);
+    })
 }
