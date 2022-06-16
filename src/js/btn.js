@@ -1,4 +1,3 @@
-
 document.querySelectorAll('.btn-group').forEach((original) => {
     const $btns = original.querySelectorAll('.btn');
     $btns.forEach(($btn)=>{

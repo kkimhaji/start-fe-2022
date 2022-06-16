@@ -1,5 +1,4 @@
 let classData = [];
-let quizData;
 
 async function getClassData(){
     const response = await fetch("./class.json");
@@ -20,7 +19,6 @@ async function getClassData(){
 async function getQuizData(){
     const result= await fetch("./quiz.json");
     return result.json(); //json과 출력에 필요한 내용이 같음
-
 }
 
 

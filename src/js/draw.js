@@ -3,9 +3,10 @@ import * as jsonData from './data';
 
 const $classTable = document.querySelectorAll('tbody')[0];
 const $quizTable = document.querySelectorAll('tbody')[1];
+const $loading = document.querySelectorAll('.spinner-border');
 
-drawClassTable();
-drawQuizTable();
+setTimeout(drawClassTable, 500);
+setTimeout(drawQuizTable, 500);
 
 function makeClassTable(classData){
     return `
@@ -29,6 +30,7 @@ function makeClassTable(classData){
 }
 
 async function drawClassTable(){
+    $classTable.innerHTML="";
     const classData = await jsonData.getClassData();
     classData.forEach(item => {
         $classTable.innerHTML += makeClassTable(item);
@@ -55,6 +57,7 @@ function makeQuizTable(quizData){
 
 
 async function drawQuizTable(){
+    $quizTable.innerHTML="";
     const quizData = await jsonData.getQuizData();
     quizData.forEach(item => {
         console.log(makeQuizTable(item));
