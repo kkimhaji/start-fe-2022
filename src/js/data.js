@@ -1,25 +1,27 @@
-let classData;
+let classData = [];
 let quizData;
 
-function getClassData(){
-    const result = fetch("class.json");
-    var index = 1;
-    result.json.array.forEach(data => {
-        classData.add({
-            week: inex+1,
-            title: data.title,
-            doUrl:data.doUrl,
-            links:data.links,
-            gitUrl: data.gitUrl,
-            date: data.datas
+async function getClassData(){
+    const response = await fetch("/class.json");
+    let i = 1;
+    for(const cd of await response.json()){
+        classData.push({
+            week: i++,
+            title: cd.title,
+            doUrl: cd.doUrl,
+            links:cd.links,
+            gitUrl: cd.gitUrl,
+            date: cd.date
         });
-    });
+    }
     return classData;
 }
 
-function getQuizData(){
-    const result=fetch("quiz.json");
-    quizData = result.json();
+async function getQuizData(){
+    const result= await fetch("quiz.json");
+    quizData = result.json(); //json과 출력에 필요한 내용이 같음
+    return result;
 }
 
 
+export {getClassData, getQuizData}
