@@ -1,12 +1,10 @@
 import * as jsonData from './data';
-
-
+                   
 const $classTable = document.querySelectorAll('tbody')[0];
 const $quizTable = document.querySelectorAll('tbody')[1];
-const $loading = document.querySelectorAll('.spinner-border');
 
-setTimeout(drawClassTable, 500);
-setTimeout(drawQuizTable, 500);
+setTimeout(() => {drawClassTable("모두")}, 500);
+setTimeout(() => {drawQuizTable("모두")}, 500);
 
 function makeClassTable(classData){
     return `
@@ -29,9 +27,9 @@ function makeClassTable(classData){
     `
 }
 
-async function drawClassTable(){
+async function drawClassTable(keyword){
     $classTable.innerHTML="";
-    const classData = await jsonData.getClassData();
+    const classData = await jsonData.filterCD(keyword);
     classData.forEach(item => {
         $classTable.innerHTML += makeClassTable(item);
     })
@@ -56,11 +54,12 @@ function makeQuizTable(quizData){
 }
 
 
-async function drawQuizTable(){
-    $quizTable.innerHTML="";
-    const quizData = await jsonData.getQuizData();
+async function drawQuizTable(keyword){
+    $quizTable.innerHTML=""; //html 초기화
+    const quizData = await jsonData.filterQD(keyword);
     quizData.forEach(item => {
-        console.log(makeQuizTable(item));
         $quizTable.innerHTML += makeQuizTable(item);
     })
 }
+
+export {drawClassTable, drawQuizTable};
