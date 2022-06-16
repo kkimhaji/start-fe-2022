@@ -1,6 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const distPath = path.join(__dirname, 'dist');
+const staticPath = path.join(__dirname, 'static');
 
 module.exports = {
 
@@ -9,7 +10,7 @@ module.exports = {
     entry: './src/js/app.js',
     devServer:{
         static:{
-            directory: distPath,
+            directory: './src/json',
         },
         compress: true,
         port:9000,
