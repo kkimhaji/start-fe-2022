@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "description": "",
   "private": true,
-  "main": "src/index.js",
+  "main": "index.js",
   "scripts": {
     "dev": "webpack --mode development",
     "start": "webpack serve --open",
-    "build": "webpack"
+    "build": "webpack && cp dist/*"
   },
   "repository": {
     "type": "git",

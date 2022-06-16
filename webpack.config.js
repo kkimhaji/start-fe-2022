@@ -6,7 +6,7 @@ module.exports = {
 
     mode: 'development',
 
-    entry: './src/index.js',
+    entry: './src/js/app.js',
     devServer:{
         static:{
             directory: distPath,
