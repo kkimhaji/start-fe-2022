@@ -1,20 +1,17 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const distPath = path.join(__dirname, 'dist');
-const staticPath = path.join(__dirname, 'static');
+const distPath = path.join(__dirname, 'docs');
 
 module.exports = {
 
-    mode: 'development',
+    mode: 'production',
 
     entry: './src/js/app.js',
     devServer:{
         static:{
-            directory: './src/json',
+            directory: distPath,
         },
-        compress: true,
-        port:9000,
-
+        port:9000
     },
     output: {
         path: distPath,
